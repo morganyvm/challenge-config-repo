@@ -7,11 +7,17 @@ As configurações que servem às aplicações no repositorio https://github.com
 onde:
 
 1. label = refere-se ao repositorio
+
 2. application = refere-se à propriedade application.name configurada no arquivo bootstrap.yml de cada spring boot application.
+
 2.1. 
+
 3. profile = refere-se ao contexto/ambiente
+
 3.1. devem ser uma composição {runtime_env}, onde:
+
 3.1.1. runtime = local, kuberntes
+
 3.1.2. env = (e.g. desafio, dev, prod, etc).
 
 /jsprbt-fa8-k8s/todo_service-kubernetes_challenge.yml 
