@@ -33,7 +33,7 @@ runtime = local
 
 env = challenge
 
-profile = <runtime>_<env> = local_challenge
+profile = {runtime}_{env} = local_challenge
 
 
 /jsprbt-fa8-k8s/todo_service-local_challenge.yml 
