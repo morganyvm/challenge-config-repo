@@ -10,20 +10,64 @@ onde:
 
 2. application = refere-se à propriedade application.name configurada no arquivo bootstrap.yml de cada spring boot application.
 
-2.1. 
+2.1. deve ser uma composição {todo_service}, onde:
+
+2.1.1. todo_service deve identificar o nome do artefato maven referente à aplicação
 
 3. profile = refere-se ao contexto/ambiente
 
-3.1. devem ser uma composição {runtime_env}, onde:
+3.1. deve ser uma composição {runtime_env}, onde:
 
-3.1.1. runtime = local, kuberntes
+3.1.1. runtime = local, kubernetes
 
-3.1.2. env = (e.g. desafio, dev, prod, etc).
+3.1.2. env = (e.g. challenge, dev, prod, etc).
+
+
+---
+
+label = jsprbt-fa8-k8s
+
+application = todo_service
+
+runtime = local
+
+env = challenge
+
+profile = <runtime>_<env> = local_challenge
+
+
+/jsprbt-fa8-k8s/todo_service-local_challenge.yml 
+
+
 
 /jsprbt-fa8-k8s/todo_service-kubernetes_challenge.yml 
 
 No caso de local o repositorio poderá ser configurado diretamente no arquivo bootstrap.yml
 
+```yaml
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          repos:
+            development:
+              pattern:
+                - '*/development'
+                - '*/staging'
+              uri: https://github.com/development/config-repo
+              
+            staging:
+              pattern:
+                - '*/qa'
+                - '*/production'
+              uri: https://github.com/staging/config-repo
+```
+
+
+---
+deployment.yml
 ```yaml
 spec:
   replicas: 1
